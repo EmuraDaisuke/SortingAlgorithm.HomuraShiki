@@ -170,19 +170,28 @@ void Sort(T* const aSrc, std::size_t nSrc, std::size_t oDirty, std::size_t nDirt
             HayateShiki::Sort(&aSrc[oDirty], nDirty, aTmp);
             
             if (nDirty < nSrc){
-                Unit<T> vUnit0, vUnit1, vUnit2;
-                InitUnit(&vUnit0, &aSrc[0], oDirty);
-                InitUnit(&vUnit1, &aSrc[oDirty], nDirty);
-                InitUnit(&vUnit2, &aSrc[oDirty + nDirty], nSrc - (oDirty + nDirty));
+                auto oPrev = 0;
+                auto oNext = oDirty + nDirty;
+                auto nPrev = oDirty;
+                auto nNext = nSrc - oNext;
+                auto bPrev = (nPrev && aSrc[nPrev] < aSrc[nPrev-1]);
+                auto bNext = (nNext && aSrc[oNext] < aSrc[oNext-1]);
                 
-                Unit<T> vJoin0, vJoin1;
-                {   // 
-                    auto pTmp = aTmp;
-                    pTmp = Join(pTmp, &vJoin0, &vUnit0, &vUnit1, false);
-                    pTmp = Join(pTmp, &vJoin1, &vUnit1, &vUnit2, true);
-                }
-                {   // 
-                    Join(aSrc, &vUnit0, &vJoin0, &vJoin1, true);
+                if (bPrev | bNext){
+                    Unit<T> vUnit0, vUnit1, vUnit2;
+                    InitUnit(&vUnit0, &aSrc[oPrev], nPrev);
+                    InitUnit(&vUnit1, &aSrc[oDirty], nDirty);
+                    InitUnit(&vUnit2, &aSrc[oNext], nNext);
+                    
+                    Unit<T> vJoin0, vJoin1;
+                    {   // 
+                        auto pTmp = aTmp;
+                        pTmp = Join(pTmp, &vJoin0, &vUnit0, &vUnit1, false);
+                        pTmp = Join(pTmp, &vJoin1, &vUnit1, &vUnit2, true);
+                    }
+                    {   // 
+                        Join(aSrc, &vUnit0, &vJoin0, &vJoin1, true);
+                    }
                 }
             }
             
