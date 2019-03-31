@@ -123,12 +123,12 @@ T* Join(T* aDst, Unit<T>* pUnit, Unit<T>* pUnit0, Unit<T>* pUnit1, bool bCopy)
     auto n0 = pUnit0->n;
     auto n1 = pUnit1->n;
     
-    if (n0 && n1){
+    if (n0 && n1 && pUnit1->a[0] < pUnit0->a[n0-1]){
         pDst = Join(pDst, pUnit1, pUnit0, pUnit1);
         if (bCopy) pDst = Copy(pDst, pUnit1->a, pUnit1->n);
     } else {
-        if (n0) pDst = Copy(pDst, pUnit0->a, n0);
-        if (n1) pDst = Copy(pDst, pUnit1->a, n1);
+        pDst = Copy(pDst, pUnit0->a, n0);
+        pDst = Copy(pDst, pUnit1->a, n1);
         pUnit1->n = 0;
     }
     
