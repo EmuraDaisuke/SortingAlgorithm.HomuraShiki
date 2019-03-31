@@ -183,7 +183,7 @@ int main(int argc, char* argv[])
 {
     test(eSrc::Rand,     10000, 1000);
     test(eSrc::Rand,   1000000, 100);
-    test(eSrc::Rand, 100000000, 10);
+    test(eSrc::Rand, 100000000, 50);
     
     test(eSrc::Nop,  100000000, 10);
     return 0;
