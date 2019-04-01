@@ -125,7 +125,7 @@ When the range is specified randomly without changing the value for the sorted a
 How was it?  
 
 We came up with the idea of ​​differential sorting, in terms of the fact that sorting does not always have to be done in its entirety.  
-Although the comparison between std::sort and std::stable_sort, which is an overall sort, and Setsuna-Shiki, which is an diff sort, is not fair, it should be used to determine the usefulness of diff sort.  
+Although the comparison between std::sort and std::stable_sort, which is an overall sort, and Homura-Shiki, which is an diff sort, is not fair, it should be used to determine the usefulness of diff sort.  
 
 I think that it could be shown that sorting can be done faster by devising it.  
 As a guideline for operation, if (D <(N / 2)), differential sorting, otherwise it is a feeling that the whole sort is good.  
