@@ -1,5 +1,5 @@
 # 焔式(Homura-Shiki)
-Homura Shiki is a new method of differential sort algorithm that applies merge sort.  
+Homura-Shiki is a new method of differential sort algorithm that applies merge sort.  
 For a sorted array, focus on the place where the value change is made and sort fast.  
 
 It has the following features.(Let D be the changed range)  
