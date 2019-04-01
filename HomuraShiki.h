@@ -9,14 +9,6 @@
 #include "../SortingAlgorithm.HayateShiki/HayateShiki.h"
 #include "../SortingAlgorithm.SetsunaShiki/SetsunaShiki.h"
 
-#if _MSC_VER//[
-// msvc
-#elif __clang__//][
-// clang
-#else//][
-// gcc
-#endif//]
-
 #define Auto    decltype(auto)
 
 
