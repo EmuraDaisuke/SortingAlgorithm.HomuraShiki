@@ -231,7 +231,7 @@ template <class RandomAccessIterator, class Compare> class Private
                                 HayateShiki::sort(dirty_first, dirty_last, mComp);
                                 
                                 Auto oDirty = std::distance(first, dirty_first);
-                                if ((oDirty + nDirty) <= nOriginal){
+                                if (oDirty >= 0 && (oDirty + nDirty) <= nOriginal){
                                     auto oLower = 0;
                                     auto oUpper = oDirty + nDirty;
                                     auto nLower = oDirty;
