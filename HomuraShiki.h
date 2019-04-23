@@ -223,15 +223,15 @@ template <class RandomAccessIterator, class Compare> class Private
                 {
                     Auto nOriginal = std::distance(first, last);
                     if (nOriginal > 1){
+                        Auto oDirty = std::distance(first, dirty_first);
                         Auto nDirty = std::distance(dirty_first, dirty_last);
-                        if (nDirty > 0){
+                        if (oDirty >= 0 && nDirty > 0 && (oDirty + nDirty) <= nOriginal){
                             if (nDirty == 1){
                                 SetsunaShiki::sort(first, last, dirty_first, mComp);
                             } else {
                                 HayateShiki::sort(dirty_first, dirty_last, mComp);
                                 
-                                Auto oDirty = std::distance(first, dirty_first);
-                                if (oDirty >= 0 && (oDirty + nDirty) <= nOriginal){
+                                {   // 
                                     auto oLower = 0;
                                     auto oUpper = oDirty + nDirty;
                                     auto nLower = oDirty;
